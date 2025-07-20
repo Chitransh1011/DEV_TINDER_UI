@@ -11,8 +11,9 @@ function App() {
     <Provider store={appStore}>
     <BrowserRouter>
       <Routes>
+       <Route path="/login" element={<Login />} />
         <Route path="/" element={<Body />}>
-          <Route path="/login" element={<Login />} />
+          
           <Route path="/" element={<Feed />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/connections" element={<Connections />} />
