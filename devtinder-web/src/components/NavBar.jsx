@@ -24,7 +24,7 @@ const NavBar = () => {
   };
   return (
     <>
-      <div className="navbar bg-neutral shadow-sm">
+      <div className="navbar bg-neutral shadow-sm relative">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-xl">
             🧑‍💻daisyUI
@@ -58,7 +58,10 @@ const NavBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <a>Settings</a>
+                    <Link to="/connections">Connections</Link>
+                  </li>
+                  <li>
+                    <Link to="/requests">Requests</Link>
                   </li>
                   <li>
                     <a onClick={handleLogout}>Logout</a>

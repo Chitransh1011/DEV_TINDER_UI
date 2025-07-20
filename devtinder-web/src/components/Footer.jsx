@@ -1,8 +1,6 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    <footer className="footer bg-base-200 text-neutral-content static bottom-0">
+    <footer className="footer bg-base-200 text-neutral-content mt-auto">
       <aside className="grid-flow-col items-center">
         <svg
           width="36"
@@ -55,5 +53,4 @@ const Footer = () => {
     </footer>
   );
 };
-
 export default Footer;
