@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { addRequest } from "../utils/requestSlice";
+import { addRequest, removeRequest } from "../utils/requestSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
@@ -7,6 +7,14 @@ import { BASE_URL } from "../utils/constants";
 const Requests = () => {
   const dispatch = useDispatch();
   const request = useSelector((store) => store.requests);
+  const reviewRequest = async(status,_id)=>{
+    try {
+      const res = await axios.post(BASE_URL+"/request/review"+"/"+status+"/"+_id,{},{withCredentials:true});
+      dispatch(removeRequest(_id));
+    } catch (error) {
+      console.error(error)
+    }
+  }
   const fetchRequest = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/requests/recieved", {
@@ -58,8 +66,8 @@ const Requests = () => {
               </p>
             </div>
             <div key={_id+index+3} className="ml-4 my-auto justify-items-center">
-                <button className="btn btn-success ml-8 mr-10">Interest</button>
-                <button className="btn btn-error">Ignore</button>
+                <button className="btn btn-success ml-8 mr-10" onClick={()=>reviewRequest("accepted",data._id)}>Accept</button>
+                <button className="btn btn-error" onClick={()=>reviewRequest("rejected",data._id)}>Reject</button>
             </div>
           </div>
         );
