@@ -21,6 +21,8 @@ const Feed = () => {
   useEffect(()=>{
     getFeed();
   },[])
+  if(!feed)return;
+  if(feed?.data.length<=0)return <h1>No user Found</h1>
   return (
     <div className="flex justify-center mt-8 pb-20">
         {feed && 

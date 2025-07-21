@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 import { removeUser } from "../utils/userSlice";
-import { removeFeed } from "../utils/feedSlice";
+import { clearFeed } from "../utils/feedSlice";
 
 const NavBar = () => {
   const user = useSelector((state) => state.user);
@@ -16,7 +16,7 @@ const NavBar = () => {
         withCredentials: true,
       });
       dispatch(removeUser());
-      dispatch(removeFeed())
+      dispatch(clearFeed())
       navigate("/login");
     } catch (error) {
       console.error(error);
@@ -27,7 +27,7 @@ const NavBar = () => {
       <div className="navbar bg-neutral shadow-sm relative">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost text-xl">
-            🧑‍💻daisyUI
+            🧑‍💻Dev-Media
           </Link>
         </div>
         <div className="flex gap-2">
