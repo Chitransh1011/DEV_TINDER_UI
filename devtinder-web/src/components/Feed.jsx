@@ -22,7 +22,11 @@ const Feed = () => {
     getFeed();
   },[])
   if(!feed)return;
-  if(feed?.data.length<=0)return <h1>No user Found</h1>
+  if(feed?.data.length<=0)return (
+    <div className="flex flex-col justify-center">
+      <h1 className="font-bold text-3xl mx-auto mt-10">No user Found</h1>
+  </div>
+)
   return (
     <div className="flex justify-center mt-8 pb-20">
         {feed && 
