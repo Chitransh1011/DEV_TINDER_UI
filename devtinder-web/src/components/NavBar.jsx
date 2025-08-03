@@ -12,11 +12,15 @@ const NavBar = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      await axios.post(BASE_URL + "/logout",{}, {
-        withCredentials: true,
-      });
+      await axios.post(
+        BASE_URL + "/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
       dispatch(removeUser());
-      dispatch(clearFeed())
+      dispatch(clearFeed());
       navigate("/login");
     } catch (error) {
       console.error(error);
@@ -34,6 +38,17 @@ const NavBar = () => {
           {user && (
             <div className="flex">
               <p className="mr-4 mt-2">Welcome, {user.firstName}</p>
+              {user.isPremium && <span
+                className={`p-2 border-2 ${
+                  user.isPremium && user.membershipType === "gold"
+                    ? "text-yellow-600 border-yellow-400"
+                    : "text-slate-600 border-slate-400"
+                }`}
+              >
+                {user.isPremium && user.membershipType === "gold"
+                  ? "GOLD"
+                  : "SILVER"}
+              </span>}
               <div className="dropdown dropdown-end">
                 <div
                   tabIndex={0}

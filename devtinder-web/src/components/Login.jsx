@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
 import { BASE_URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
+
 const Login = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -13,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [isLoggined, setIsLoggined] = useState(false);
+  const [isLoggined, setIsLoggined] = useState(true);
   const [showToast, setShowToast] = useState(false);
   const handleLogin = async () => {
     try {
