@@ -95,11 +95,20 @@ const Connections = () => {
                   ))}
                 </div>
 
-                <Link to={`/chat/${_id}`}>
-                  <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md transition">
+                {isPremium ? (
+                  <Link to={`/chat/${_id}`}>
+                    <button className="btn btn-soft btn-accent sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl">
+                      Chat
+                    </button>
+                  </Link>
+                ) : (
+                  <button
+                    disabled
+                    className="btn btn-soft btn-accent sm:btn-sm md:btn-md lg:btn-lg xl:btn-xl opacity-50 cursor-not-allowed"
+                  >
                     Chat
                   </button>
-                </Link>
+                )}
               </div>
             </div>
           );
